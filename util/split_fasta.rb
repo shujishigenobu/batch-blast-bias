@@ -18,7 +18,7 @@ unless ARGV.size == 3
 end
 
 if File.exists?($outdir)
-  raise "Directory, #{$outdir}, already exists."
+  raise "\nERROR: Directory, #{$outdir}, already exists."
 else
   Dir.mkdir($outdir)
 end
