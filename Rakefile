@@ -1,4 +1,5 @@
 require 'rake/clean'
+require 'yaml'
 
 query = "example.fasta"
 num_per_subfasta = 100
@@ -14,18 +15,39 @@ directory DIR_BATCH_SCRIPTS
 DIR_SGE_LOGS = "batch_logs"
 directory DIR_SGE_LOGS
 
-BATCH_SCRIPT_TEMPLATE = "run_blastx_nr_example.template.sh"
+BATCH_SCRIPT_TEMPLATE = "run_blast_batch.template.sh"
+# BATCH_SCRIPT_TEMPLATE = "run_blastx_nr_example.template.sh"
 
 # $blast_result_combined = nil
 
-task :default => :generate_batch_jobs
+## load conf
+$conf = YAML.load_file("conf.yml")
+p $conf
+
+p suffix = ".vs.#{File.basename($conf['db'])}.blast.fmt7.txt"
+
+desc "build the template of batch script from conf" 
+task :build_batch_template do |t|
+  $conf['batch_script_template']
+  temp = File.open($conf['batch_script_template']).read
+  txt = File.open($conf['batch_script_template_sge']).read
+  
+  temp.sub!(/%SGE_PART%/, txt)
+  temp.sub!(/%DB%/, $conf['db'])
+  temp.sub!(/%OUTF%/, "`basename $QUERY`#{suffix}")
+
+  File.open(BATCH_SCRIPT_TEMPLATE, "w"){|o| o.puts temp}
+  puts "Template for batch jobs was generated: #{BATCH_SCRIPT_TEMPLATE}"
+end
+
 
 desc "split query fasta files"
 task :split_query do 
   puts "split_query"
 
-  sh "ruby util/split_fasta.rb #{query} #{num_per_subfasta} #{DIR_FASTA_SPLIT}"
+  sh "ruby util/split_fasta.rb #{$conf['query']} #{$conf['num_fasta_per_subfile']} #{DIR_FASTA_SPLIT}"
 end
+
 
 desc "generate scripts for batch BLAST searches"
 file :generate_batch_jobs => FileList["#{DIR_FASTA_SPLIT}/*[0-9].fasta"] do |t|
@@ -46,7 +68,6 @@ end
 
 desc "SGE result checking"
 task :postchk_sge => DIR_SGE_LOGS do |t|
-  suffix = ".vs.swissprot.blastx.fmt7.txt"
   result_files = FileList["fasta_split/*[0-9].fasta"].map{|f| File.basename(f) + suffix}
   result_files.each do |f|
     unless File.exists?("#{f}.finished")
@@ -63,7 +84,6 @@ end
 
 desc "combine blast job results into a single file"
 task :combine_blast_results do
-  suffix = ".vs.swissprot.blastx.fmt7.txt"
   result_files = FileList["fasta_split/*[0-9].fasta"].map{|f| File.basename(f) + suffix}
   result_files_sorted = result_files.sort{|a, b| 
     ma = /\d+\.fasta#{suffix}/.match(a)
