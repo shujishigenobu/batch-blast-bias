@@ -1,0 +1,3 @@
+#$ -S /bin/bash
+#$ -q medium
+#$ -cwd
