@@ -1,9 +1,6 @@
 require 'rake/clean'
 require 'yaml'
 
-query = "example.fasta"
-num_per_subfasta = 100
-
 CLOBBER.include(:default)
 
 DIR_FASTA_SPLIT = "fasta_split"
@@ -23,6 +20,9 @@ BATCH_SCRIPT_TEMPLATE = "run_blast_batch.template.sh"
 ## load conf
 $conf = YAML.load_file("conf.yml")
 p $conf
+
+query = $conf['query']
+num_fasta_per_subfile = $conf['num_fasta_per_subfile']
 
 p suffix = ".vs.#{File.basename($conf['db'])}.blast.fmt7.txt"
 
@@ -45,7 +45,7 @@ desc "split query fasta files"
 task :split_query do 
   puts "split_query"
 
-  sh "ruby util/split_fasta.rb #{$conf['query']} #{$conf['num_fasta_per_subfile']} #{DIR_FASTA_SPLIT}"
+  sh "ruby util/split_fasta.rb #{query} #{num_fasta_per_subfile} #{DIR_FASTA_SPLIT}"
 end
 
 
