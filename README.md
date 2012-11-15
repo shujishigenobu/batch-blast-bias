@@ -14,6 +14,8 @@ $ wget https://github.com/downloads/shujishigenobu/batch-blast-bias/batch-blast-
 $ tar xzvf batch-blast-bias-r0.1.1.tar.gz
 $ cd batch-blast-bias-r0.1.1  # move to the program directory
 ```
+You can also download `example.fasta` for practice from https://github.com/shujishigenobu/batch-blast-bias/downloads .
+
 ### 2) Prepare coniguration file, conf.yml
 
 `batch-blast-bias` requires `conf.yml`, a configuration file. An example file is included in the package. It would be good idea to create your own `conf.yml` from `conf.yml.example`.
