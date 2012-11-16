@@ -3,6 +3,12 @@ batch-blast-bias
 
 convenient scripts for batch blast search on NIBB bias
 
+## Requrement
+
+*  ruby
+*  rake
+*  NCBI blast+ (not classical blastall)
+
 ## Quick Start
 
 ### 1) Download software
