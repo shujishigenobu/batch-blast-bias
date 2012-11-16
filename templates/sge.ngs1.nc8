@@ -1,0 +1,3 @@
+#$ -S /bin/bash
+#$ -l nc=8
+#$ -cwd
