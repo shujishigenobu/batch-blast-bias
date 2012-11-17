@@ -62,3 +62,8 @@ $ rake finalize
 If you run `conf.yml.example`, the BLAST result, XXX, should be obtained.
 
 
+## License
+
+Copyright 2012 Shuji Shigenobu.
+
+Licensed under the MIT License
