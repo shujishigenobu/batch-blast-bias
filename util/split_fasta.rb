@@ -1,3 +1,7 @@
+begin
+  require 'rubygems'
+rescue LoadError
+end
 require 'bio'
 
 include Bio
