@@ -20,6 +20,12 @@ $ wget https://github.com/downloads/shujishigenobu/batch-blast-bias/batch-blast-
 $ tar xzvf batch-blast-bias-r0.1.1.tar.gz
 $ cd batch-blast-bias-r0.1.1  # move to the program directory
 ```
+Alternatively you can download the latest source code from github as follows:
+
+```bash
+$ git clone git://github.com/shujishigenobu/batch-blast-bias.git
+```
+
 You can also download `example.fasta` for practice from https://github.com/shujishigenobu/batch-blast-bias/downloads .
 
 ### 2) Prepare coniguration file, conf.yml
