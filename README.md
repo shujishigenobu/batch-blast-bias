@@ -53,7 +53,7 @@ batch_script_template_sge: templates/sge.bias.small
 $  rake build_batch_template
 $  rake split_query
 $  rake generate_batch_jobs
-$  sge_submit_jobs
+$  rake sge_submit_jobs
 ```
 Now your jobs are queued. Monitor your jobs by SGE command like `qstat`.
 
