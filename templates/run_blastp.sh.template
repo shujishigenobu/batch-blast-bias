@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# SGE PAREMETERS 
+%SGE_PART%
+ 
+QUERY=%FASTAF%
+DB=%DB%
+OUTF=%OUTF%
+
+NCPU=1
+EVALUE=1.0e-4
+
+FORMAT="7 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen qseq sseq"
+ 
+blastp -query $QUERY \
+-db  $DB \
+-evalue $EVALUE \
+-num_threads $NCPU \
+-soft_masking yes  \
+-seg yes \
+-outfmt "$FORMAT" \
+-max_target_seqs 10 \
+-out $OUTF \
+
+touch $OUTF.finished
