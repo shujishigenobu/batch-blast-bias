@@ -16,13 +16,6 @@ convenient scripts for batch blast search on NIBB bias
 Download `batch-blast-bias` package from https://github.com/downloads/shujishigenobu/batch-blast-bias/batch-blast-bias-r0.1.1.tar.gz and then extract it.
 
 ```bash
-$ wget https://github.com/downloads/shujishigenobu/batch-blast-bias/batch-blast-bias-r0.1.1.tar.gz
-$ tar xzvf batch-blast-bias-r0.1.1.tar.gz
-$ cd batch-blast-bias-r0.1.1  # move to the program directory
-```
-Alternatively you can download the latest source code from github as follows:
-
-```bash
 $ git clone git://github.com/shujishigenobu/batch-blast-bias.git
 ```
 
@@ -51,6 +44,10 @@ batch_script_template_sge: templates/sge.bias.small
 
 ```bash
 $  rake build_batch_template
+```
+edit `build_batch_template` if needed.
+
+```bash
 $  rake split_query
 $  rake generate_batch_jobs
 $  rake sge_submit_jobs
