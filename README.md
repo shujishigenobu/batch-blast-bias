@@ -62,7 +62,30 @@ $ rake combine_blast_results
 $ rake finalize
 ```
 
-If you run `conf.yml.example`, the BLAST result, XXX, should be obtained.
+## Tips
+
+### Monitor progress
+
+Use `scripts/monitor_progress.rb`
+
+(example)
+```bash
+$ ruby scripts/monitor_progress.rb
+
+ORF_Dpul_131012.pep_1.fasta     job1    100
+ORF_Dpul_131012.pep_2.fasta     job112  100
+...
+ORF_Dpul_131012.pep_658.fasta	job621	100
+ORF_Dpul_131012.pep_659.fasta	job622	60
+# 64300 / 65860 (97.63%)
+```
+Columns are 1) query name, 2) job ID and 3) number of completed queries.
+
+### Rescue failed jobs
+
+Use `rescue_killed_jobs.rb`
+
+
 
 
 ## License
