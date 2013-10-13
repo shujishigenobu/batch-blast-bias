@@ -1,5 +1,6 @@
 #=== conf ===
-new_queue = "medium"
+new_queue = "cat"
+ncpu = 8
 #===
 
 ORIGINAL_SCRIPT_DIR = "batch_scripts"
@@ -23,9 +24,15 @@ failed_scripts.each do |f|
   ff = File.basename(f)
   path = "#{ORIGINAL_SCRIPT_DIR}/#{ff}"
   txt = File.open(path).read
-  txt.sub!(/-q small/, "-q #{new_queue} ")
+  txt.sub!(/\#\$ -q\s+.+/, "\#\$ -q #{new_queue} ")
+  txt.sub!(/\#\$ -cwd/, "\#\$ -pe smp #{ncpu}\n\#\$ -cwd")
+ 
   txt.sub!(/^QUERY\=/, "QUERY=../")
-  newscript = "#{NEW_SCRIPT_DIR}/#{ff}"
+  txt.sub!(/^NCPU\=1/, "NCPU=#{ncpu}")
+
+ newscript = "#{NEW_SCRIPT_DIR}/#{ff}"
   File.open(newscript, "w"){|o| o.puts txt}
 end
+
+STDERR.puts "#{failed_scripts.size} rescue scripts were generated and saved in #{NEW_SCRIPT_DIR}."
 
