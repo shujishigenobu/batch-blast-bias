@@ -15,7 +15,9 @@ Compatible with updated bias4 (April 1, 2014).
 
 ### 1) Download software
 
-Download `batch-blast-bias` package from https://github.com/downloads/shujishigenobu/batch-blast-bias/batch-blast-bias-r0.1.1.tar.gz and then extract it.
+Download `batch-blast-bias` package from https://github.com/shujishigenobu/batch-blast-bias/archive/1.0.tar.gz and then extract it.
+
+Or you can clone the latest version of `batch-blast-bias` from github using `git` command.
 
 ```bash
 $ git clone git://github.com/shujishigenobu/batch-blast-bias.git
