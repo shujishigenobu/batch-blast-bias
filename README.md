@@ -1,7 +1,9 @@
 batch-blast-bias
 ================
 
-convenient scripts for batch blast search on NIBB bias
+Convenient scripts for batch blast search on NIBB bias
+
+Compatible with updated bias4 (April 1, 2014).
 
 ## Requrement
 
