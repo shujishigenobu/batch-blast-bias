@@ -85,9 +85,13 @@ ORF_Dpul_131012.pep_659.fasta	job622	60
 ```
 Columns are 1) query name, 2) job ID and 3) number of completed queries.
 
-### Rescue failed jobs
+### Find/Rescue failed jobs
 
-Use `rescue_killed_jobs.rb`
+Useful scripts:
+`scripts/rescue_killed_jobs.rb` 
+`scripts/detect_failed_batch_scripts.rb'
+
+
 
 
 
