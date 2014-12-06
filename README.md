@@ -88,8 +88,8 @@ Columns are 1) query name, 2) job ID and 3) number of completed queries.
 ### Find/Rescue failed jobs
 
 Useful scripts:
-`scripts/rescue_killed_jobs.rb` 
-`scripts/detect_failed_batch_scripts.rb'
+- `scripts/rescue_killed_jobs.rb`
+- ``scripts/detect_failed_batch_scripts.rb`
 
 
 
