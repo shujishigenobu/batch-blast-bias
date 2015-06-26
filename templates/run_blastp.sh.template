@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# SGE PAREMETERS 
+# SGE PARAMETERS 
 %SGE_PART%
  
 QUERY=%FASTAF%
