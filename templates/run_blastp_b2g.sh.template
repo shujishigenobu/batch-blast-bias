@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# SGE PARAMETERS 
+%SGE_PART%
+
+#=== config ===
+NCPU=1
+EVALUE=1.0e-4
+NHITS=50
+#===
+ 
+QUERY=%FASTAF%
+DB=%DB%
+OUTF=%OUTF%
+FORMAT=5
+ 
+blastp -query $QUERY \
+-db  $DB \
+-evalue $EVALUE \
+-num_threads $NCPU \
+-soft_masking yes  \
+-seg yes \
+-outfmt "$FORMAT" \
+-num_alignments $NHITS -max_hsps $NHITS \
+-show_gis \
+-out $OUTF \
+
+touch $OUTF.finished
