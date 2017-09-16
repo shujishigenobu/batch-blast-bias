@@ -1,0 +1,4 @@
+#$ -S /bin/bash
+#$ -q medium
+#$ -pe smp %N%
+#$ -cwd

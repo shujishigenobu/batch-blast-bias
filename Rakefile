@@ -24,7 +24,12 @@ p $conf
 query = $conf['query']
 num_fasta_per_subfile = $conf['num_fasta_per_subfile']
 
-p suffix = ".vs.#{File.basename($conf['db'])}.blast.fmt7.txt"
+case $conf['outfmt']
+when "xml"
+  suffix = ".vs.#{File.basename($conf['db'])}.blast.xml"
+else
+  suffix = ".vs.#{File.basename($conf['db'])}.blast.fmt7.txt"
+end
 
 desc "build the template of batch script from conf" 
 task :build_batch_template do |t|

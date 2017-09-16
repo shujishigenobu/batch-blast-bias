@@ -1,6 +1,7 @@
 query: example.fasta
 db:    /bio/db/blast/db/swissprot
 num_fasta_per_subfile: 100
+outfmt: fmt7 #fmt7 or xml
 
 batch_script_template:     templates/run_blastx.sh.template
 batch_script_template_sge: templates/sge.bias.small

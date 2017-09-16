@@ -7,6 +7,7 @@
 NCPU=1
 EVALUE=1.0e-4
 NHITS=50
+TASK=blastp-fast
 #===
  
 QUERY=%FASTAF%
@@ -16,6 +17,7 @@ FORMAT=5
  
 blastp -query $QUERY \
 -db  $DB \
+-task $TASK \
 -evalue $EVALUE \
 -num_threads $NCPU \
 -soft_masking yes  \
