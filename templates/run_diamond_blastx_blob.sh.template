@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# SGE PAREMETERS
+%SGE_PART%
+
+#=== conf ===
+NCPU=8
+#===
+
+
+QUERY=%FASTA%
+DB=%DB%
+TASK=blastx
+OUTF=`basename $QUERY`.vs.`basename $DB`.${TASK}.dmnd.out
+FORMAT=6
+
+diamond $TASK \
+ --query $QUERY \
+ --db  $DB \
+ --sensitive \
+ --evalue $EVALUE \
+ --threads $NCPU \
+ --outfmt $FORMAT \
+ --max-target-seqs 1 \
+ --out $OUTF \
